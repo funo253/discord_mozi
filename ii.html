@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discord用Markdown Editor</title>
+  <title>Markdown Editor</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -53,12 +53,13 @@
   </style>
 </head>
 <body>
-  <h1>Discord用Markdown Editor</h1>
+  <h1>Markdown Editor</h1>
   <button onclick="toggleTheme()">ライト / ダーク モード</button>
 
   <div id="toolbar">
     <button onclick="addMarkdown('**', '**')">太字</button>
     <button onclick="addMarkdown('*', '*')">斜体</button>
+    <button onclick="addMarkdown('-# ', '')">小文字</button>
     <button onclick="addMarkdown('# ', '')">見出し1</button>
     <button onclick="addMarkdown('## ', '')">見出し2</button>
     <button onclick="addMarkdown('### ', '')">見出し3</button>
@@ -110,3 +111,4 @@
   </script>
 </body>
 </html>
+
