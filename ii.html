@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Markdown Editor</title>
+  <title>Discord用Markdown Editor</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,7 +16,7 @@
       background-color: #2e2e2e;
       color: #fff;
     }
-    #editor, #preview {
+    #editor {
       width: 100%;
       min-height: 200px;
       margin-top: 10px;
@@ -25,15 +25,12 @@
       border-radius: 5px;
       background-color: #fff;
       color: #000;
+      font-family: monospace;
     }
 
-    body.dark #editor, body.dark #preview {
+    body.dark #editor {
       background-color: #444;
       color: #fff;
-    }
-
-    #editor {
-      font-family: monospace;
     }
 
     #toolbar button {
@@ -45,20 +42,6 @@
       background-color: #f0f0f0;
     }
 
-    /* プレビューのスタイル */
-    #preview {
-      margin-top: 20px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background-color: #f9f9f9;
-      white-space: pre-wrap;
-    }
-
-    body.dark #preview {
-      background-color: #444;
-    }
-
     button {
       margin-top: 10px;
       padding: 10px;
@@ -67,21 +50,10 @@
     button:hover {
       background-color: #f0f0f0;
     }
-
-    /* ネタバレ用のカスタムスタイル */
-    .spoiler {
-      background-color: #000;
-      color: #000;
-      cursor: pointer;
-    }
-
-    .spoiler.show {
-      color: #fff;
-    }
   </style>
 </head>
 <body>
-  <h1>Markdown Editor</h1>
+  <h1>Discord用Markdown Editor</h1>
   <button onclick="toggleTheme()">ライト / ダーク モード</button>
 
   <div id="toolbar">
@@ -100,15 +72,11 @@
   <h2>マークダウン入力</h2>
   <textarea id="editor" oninput="updatePreview()"></textarea>
 
-  <h2>Discord風プレビュー</h2>
-  <div id="preview"></div>
-
   <button onclick="copyToClipboard()">マークダウンをコピー</button>
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     const editor = document.getElementById('editor');
-    const preview = document.getElementById('preview');
 
     // マークダウン記法を挿入する関数
     function addMarkdown(before, after) {
@@ -123,34 +91,21 @@
       editor.value = newText;
       editor.focus();
       editor.setSelectionRange(start + before.length, end + before.length);
-      updatePreview();
-    }
-
-    // プレビューを更新する関数
-    function updatePreview() {
-      const markdownText = editor.value;
-
-      // markedでMarkdownをHTMLに変換
-      let htmlContent = marked(markdownText);
-
-      // ネタバレ用の処理
-      htmlContent = htmlContent.replace(/\|\|(.*?)\|\|/g, '<span class="spoiler" onclick="this.classList.toggle(\'show\')">$1</span>');
-
-      // プレビューに反映
-      preview.innerHTML = htmlContent;
     }
 
     // クリップボードにコピーする関数
     function copyToClipboard() {
-      editor.select();
-      document.execCommand("copy");
-      alert("マークダウンをコピーしました！");
+      const markdownText = editor.value;
+      navigator.clipboard.writeText(markdownText).then(() => {
+        alert("マークダウンをコピーしました！");
+      }).catch(err => {
+        alert("コピーに失敗しました: " + err);
+      });
     }
 
     // ダークモードの切り替え
     function toggleTheme() {
       document.body.classList.toggle('dark');
-      updatePreview();
     }
   </script>
 </body>
