@@ -1,1 +1,1 @@
-# discord_mozi
+# Discord用Markdown Editor
