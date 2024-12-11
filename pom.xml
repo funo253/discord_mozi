@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- プロジェクト情報 -->
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId> <!-- あなたのグループID -->
+    <artifactId>markdown-editor</artifactId> <!-- あなたのプロジェクト名 -->
+    <version>1.0-SNAPSHOT</version> <!-- プロジェクトのバージョン -->
+    <packaging>jar</packaging>
+
+    <!-- プロジェクトの依存関係 -->
+    <dependencies>
+        <!-- CommonMarkの依存関係 -->
+        <dependency>
+            <groupId>org.commonmark</groupId>
+            <artifactId>commonmark</artifactId>
+            <version>0.18.0</version> <!-- 最新バージョンを確認してください -->
+        </dependency>
+    </dependencies>
+
+    <!-- プラグインの設定（必要に応じて） -->
+    <build>
+        <plugins>
+            <!-- プラグイン設定があればここに記述 -->
+        </plugins>
+    </build>
+
+</project>
