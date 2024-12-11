@@ -1,1 +1,0 @@
-# Discord用Markdown Editor
